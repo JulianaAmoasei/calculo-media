@@ -1,0 +1,76 @@
+<!--HTML-->
+<html>
+<meta charset="UTF-8">
+
+<h1>verifique aprovação</h1>
+
+<form onsubmit="return validaNota()">
+    <label>1ª avaliação</label>
+    <input id="prova1" type="text"><br>
+    <label>2ª avaliação</label>
+    <input id="prova2" type="text"><br>
+    <label>3ª avaliação</label>
+    <input id="prova3" type="text"><br>
+    <button type="submit">Verificar</button>
+</form>
+
+<p id="mensagem">Passa ou repassa?</p>
+
+<!--Daqui pra baixo é JS-->
+
+<script>
+    //entrada
+
+
+
+    function validaNota() {
+
+        // entrada
+
+        var inputNota1 = document.getElementById("prova1");
+        var nota1 = inputNota1.value;
+
+        var inputNota2 = document.getElementById("prova2");
+        var nota2 = inputNota2.value;
+
+        var inputNota3 = document.getElementById("prova3");
+        var nota3 = inputNota3.value;
+
+        var paragrafoMensagem = document.getElementById("mensagem");
+
+        //processamento
+
+        nota1 = parseInt(nota1);
+        nota2 = parseInt(nota2);
+        nota3 = parseInt(nota3);
+
+        if (nota1 == "" || nota2 == "" || nota3 == "") {
+            paragrafoMensagem.textContent = "por favor preencha as notas";
+        } else {
+            if (isNaN(nota1) && isNaN(nota2) && isNaN(nota3)) {
+                paragrafoMensagem.textContent = "por favor preencha somente números";
+            }
+            else {
+                if (nota1 < 0 || nota2 < 0 || nota3 < 0) {
+                    paragrafoMensagem.textContent = "por favor preencha somente números válidos";
+                }
+                else {
+                    var notaTotal = (nota1 + nota2 + nota3) / 3;
+                    console.log(nota1 + " " + nota2 + " " + nota3);
+                    console.log(notaTotal);
+                    if (notaTotal >= 6) {
+                        paragrafoMensagem.textContent = "APROVADA!";
+                    }
+                    else {
+                        paragrafoMensagem.textContent = "REPROVADA D:";
+                    }
+                }
+            }
+        };
+
+        return false;
+    };
+
+</script>
+
+</html>

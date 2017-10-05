@@ -1,0 +1,40 @@
+<!--< aqui é HTML>-->
+
+<html>
+<meta charset="UTF-8">
+
+<h1>Qual é o seu nome?</h1>
+
+<form onsubmit="return validaNome()">
+    <label>Meu nome é:</label>
+    <input id="nome" type="text">
+    <button type="submit">Responder!</button>
+</form>
+
+<p id="mensagem"></p>
+
+<!--aqui é JS-->
+
+<script>
+    function validaNome() {
+
+        // entrada
+
+        var inputNome = document.getElementById("nome");
+        var nome = inputNome.value;
+        var paragrafoMensagem = document.getElementById("mensagem");
+
+        //processamento
+        if (nome == "") {
+            paragrafoMensagem.textContent = "por favor preencha o nome";
+        } else {
+            paragrafoMensagem.textContent = "Olá, bem-vinda " + nome;
+        };
+
+        return false;
+
+    };
+
+</script>
+
+</html>
