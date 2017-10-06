@@ -21,8 +21,6 @@
 <script>
     //entrada
 
-
-
     function validaNota() {
 
         // entrada
@@ -40,14 +38,15 @@
 
         //processamento
 
-        nota1 = parseInt(nota1);
-        nota2 = parseInt(nota2);
-        nota3 = parseInt(nota3);
-
         if (nota1 == "" || nota2 == "" || nota3 == "") {
             paragrafoMensagem.textContent = "por favor preencha as notas";
         } else {
-            if (isNaN(nota1) && isNaN(nota2) && isNaN(nota3)) {
+
+            nota1 = parseFloat(nota1);
+            nota2 = parseFloat(nota2);
+            nota3 = parseFloat(nota3);
+
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
                 paragrafoMensagem.textContent = "por favor preencha somente números";
             }
             else {
@@ -56,8 +55,6 @@
                 }
                 else {
                     var notaTotal = (nota1 + nota2 + nota3) / 3;
-                    console.log(nota1 + " " + nota2 + " " + nota3);
-                    console.log(notaTotal);
                     if (notaTotal >= 6) {
                         paragrafoMensagem.textContent = "APROVADA!";
                     }

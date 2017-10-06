@@ -1,0 +1,35 @@
+<html>
+<meta charset="UTF-8">
+
+<h1>Preencha seu nome</h1>
+
+<form onsubmit="return registraNome()">
+    <label>Digite seu nome:</label>
+    <input id="campoNome" type="text">
+    <button type="submit">Enviar</button>
+</form>
+
+<p id="mensagem">Olá</p>
+
+<script>
+
+function registraNome(){
+    var nome = document.getElementById("campoNome").value;
+    var campoMensagem = document.getElementById("mensagem");
+
+    if (nome == ""){
+        campoMensagem.textContent = "Preencha seu nome";
+        return false;
+
+    } else {
+        campoMensagem.textContent = "Olá, " + nome + ", bem-vinda!";
+        return false;
+    }
+    
+};
+
+</script>
+
+
+
+</html>

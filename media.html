@@ -1,27 +1,49 @@
 <!--HTML-->
+<html>
+<meta charset="UTF-8">
 
 <h1>Exercício Média</h1>
+
+<form onsubmit="return verificaMedia()">
+    <label>1ª avaliação</label>
+    <input id="prova1" type="text"><br>
+    <label>2ª avaliação</label>
+    <input id="prova2" type="text"><br>
+    <label>3ª avaliação</label>
+    <input id="prova3" type="text"><br>
+    <button type="submit">Calcular</button>
+</form>
+
+<p id="mensagem">Sua média é:</p>
 
 
 <!--Daqui pra baixo é JS-->
 
 <script>
-    //entrada
+    function verificaMedia() {
+        var prova1 = document.getElementById("prova1").value;
+        var prova2 = document.getElementById("prova2").value;
+        var prova3 = document.getElementById("prova3").value;
+        var textoMensagem = document.getElementById("mensagem");
 
-    var n1 = prompt("digite o número 1");
-    var n2 = prompt("digite o número 2");
-    var n3 = prompt("digite o número 3");
-
-    //processamento
-
-    n1 = parseInt(n1);
-    n2 = parseInt(n2);
-    n3 = parseInt(n3);
-
-    var media = (n1 + n2 + n3) / 3;
-
-    //saida
-
-    alert("A média é: " + media);
-
+        if (prova1 == "" || prova2 == "" || prova3 == "") {
+            textoMensagem.textContent = "Preencha todos os campos.";
+            return false;
+        }
+        prova1 = parseFloat(prova1);
+        prova2 = parseFloat(prova2);
+        prova3 = parseFloat(prova3);
+        if (isNaN(prova1) || isNaN(prova2) || isNaN(prova3)) {
+            textoMensagem.textContent = "Preencha somente números.";
+            return false;
+        }
+        if (prova1 < 0 || prova2 < 0 || prova3 < 0) {
+            textoMensagem.textContent = "Preencha números positivos.";
+        } else {
+            var media = (prova1 + prova2 + prova3) / 3;
+            textoMensagem.textContent = media;
+            return false;
+        }
+    };
+        
 </script>
